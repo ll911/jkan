@@ -7,8 +7,8 @@ logo: /img/jkan.png
 theme: Default
 
 # Authentication
-github_client_id: f0ff7fd8c2e6380e6af0
-gatekeeper_host: https://gk-jkan.pathfinder.gov.bc.ca/
+github_client_id: ${GITHUB_APP_ID}
+gatekeeper_host: ${GATEKEEPER_HOST}
 
 # Dataset schema
 schema: default
