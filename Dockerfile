@@ -1,4 +1,4 @@
-FROM node:onbuild
+FROM ruby:2.1-onbuild
 MAINTAINER leo.lou@gov.bc.ca
 
 RUN \
@@ -6,13 +6,11 @@ RUN \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     git \
-    ruby \
-    ruby-dev \
   && git config --global url.https://github.com/.insteadOf git://github.com/ \
-  && gem install --no-ri --no-rdoc \
-    jekyll bundle \
-  && npm install -g bower \
-  && npm install -g grunt-cli \
+  && gem install nokogiri -- --use-system-libraries -N \
+  && gem install jekyll -N \
+  && gem install github-pages -N \
+  && gem install bundler -N \
   && DEBIAN_FRONTEND=noninteractive apt-get purge -y \
   && DEBIAN_FRONTEND=noninteractive apt-get autoremove -y \
   && DEBIAN_FRONTEND=noninteractive apt-get clean \  
