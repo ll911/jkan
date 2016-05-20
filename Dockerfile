@@ -20,9 +20,7 @@ RUN \
 
 RUN git clone https://github.com/ll911/jkan.git /tmp/repo1 && cp -r /tmp/repo1/* /usr/src/app && rm -Rf /tmp/repo1
 RUN cd /usr/src/app \
-  && bundle exec jekyll build
-RUN npm install
-
+  && npm install
 
 RUN useradd -ms /bin/bash jekyll \
   && chown -R jekyll:0 /usr/src/app \
