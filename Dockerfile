@@ -22,7 +22,7 @@ RUN \
 RUN git clone https://github.com/ll911/jkan.git /tmp/repo1 && cp -r /tmp/repo1/* /usr/src/app && rm -Rf /tmp/repo1
 RUN cd /usr/src/app 
 RUN bundle install
-RUN bundle exec jekyll build --destination _site/jkan
+RUN bundle exec jekyll build
 RUN bundle exec htmlproof ./_site --disable-external --allow-hash-href
 
 RUN useradd -ms /bin/bash jekyll \
