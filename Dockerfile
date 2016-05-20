@@ -1,5 +1,6 @@
 FROM ruby:2.1-onbuild
 MAINTAINER leo.lou@gov.bc.ca
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES true
 
 RUN \
   DEBIAN_FRONTEND=noninteractive apt-get update \
@@ -20,6 +21,7 @@ RUN git clone https://github.com/ll911/jkan.git /tmp/repo1 && cp -r /tmp/repo1/*
 RUN cd /usr/src/app 
 RUN bundle install
 RUN bundle exec jekyll build --destination _site/jkan
+RUN bundle exec htmlproof ./_site --disable-external --allow-hash-href
 
 RUN useradd -ms /bin/bash jekyll \
   && chown -R jekyll:0 /usr/src/app \
